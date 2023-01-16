@@ -125,3 +125,5 @@ while not termine:
             joueur = "O"
         else:
             joueur = "X"
+
+print("Celle-ci est la version FINALE")
