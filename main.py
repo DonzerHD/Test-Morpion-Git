@@ -49,6 +49,33 @@ def est_coup_valide(plateau:dict, coup:str) -> bool:
         return True
     else:
         return False
+
+def est_gagnante(plateau:dict) -> bool:
+    """Fonction qui vérifie si la grille est gagnante
+    Args:
+        plateau (dict): Le plateau de jeu
+    Returns:
+        bool: True si la grille est gagnante, False sinon
+    """
+    
+    # Vérification des lignes
+    for cle in plateau:
+        if plateau[cle][0] == plateau[cle][1] == plateau[cle][2] and plateau[cle][0] != None:
+            return True
+        
+    # Vérification des colonnes
+    for i in range(3):
+        if plateau["A"][i] == plateau["B"][i] == plateau["C"][i] and plateau["A"][i] != None:
+            return True
+    
+    # Vérification des diagonales
+    if plateau["A"][0] == plateau["B"][1] == plateau["C"][2] and plateau["A"][0] != None:
+            return True
+    
+    if plateau["A"][2] == plateau["B"][1] == plateau["C"][0] and plateau["A"][2] != None:
+            return True
+    
+    return False
     
 def est_pleine(plateau:dict) -> bool:
     """Fonction qui permet de savoir si la grille est pleine
@@ -72,3 +99,29 @@ plateau = {
 
 termine = False
 joueur = "X"
+
+while not termine:
+    afficher_grille(plateau)
+    
+    coup = input("Entrez un coup : (Joueur = " + joueur + " ) ")
+    # On vérifie si le coup est valide, sinon on redemande un coup
+    while not est_coup_valide(plateau, coup):
+        coup = input("Entrez un coup (Valide cette fois): ")
+    
+    jouer_coup(plateau, joueur, coup)
+    
+    pleine = est_pleine(plateau)
+    gagnante = est_gagnante(plateau)
+    termine = pleine or gagnante
+    
+    if gagnante:
+        afficher_grille(plateau)
+        print("Félicitations joueur ", joueur)
+    elif pleine:
+        afficher_grille(plateau)
+        print("Égalité")
+    else:
+        if joueur == "X":
+            joueur = "O"
+        else:
+            joueur = "X"
