@@ -15,3 +15,6 @@ def afficher_grille(plateau:dict) -> None:
             else:
                 print(elt, end="\t|\t")
         print("\n---------------------------------------------------------")
+        
+"commentaire"
+print("ghello worfd")
