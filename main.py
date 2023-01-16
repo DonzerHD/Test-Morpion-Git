@@ -1,15 +1,5 @@
-<<<<<<< HEAD
-
-def jouer_coup(plateau:dict, joueur:str, coup:str) -> None:
-    """Fonction qui joue un coup (Ne vérifie pas si le coup est valide)
-    Args:
-        plateau (dict): Le plateau de jeu
-        joueur (str): "O" ou "X"
-        coup (str): Coordonnées de la forme "A1"
-    """
-    plateau[coup[0].upper()][int(coup[1])] = joueur
-=======
 import os
+
 def afficher_grille(plateau:dict) -> None:
     """Fonction qui affiche la grille du morpion
     Args:
@@ -27,7 +17,16 @@ def afficher_grille(plateau:dict) -> None:
                 print(elt, end="\t|\t")
         print("\n---------------------------------------------------------")
 
-<<<<<<< HEAD
+def jouer_coup(plateau:dict, joueur:str, coup:str) -> None:
+    """Fonction qui joue un coup (Ne vérifie pas si le coup est valide)
+    Args:
+        plateau (dict): Le plateau de jeu
+        joueur (str): "O" ou "X"
+        coup (str): Coordonnées de la forme "A1"
+    """
+    plateau[coup[0].upper()][int(coup[1])] = joueur
+
+
 def est_coup_valide(plateau:dict, coup:str) -> bool:
     """Fonction qui vérifie si un coup est valide
 
@@ -50,7 +49,7 @@ def est_coup_valide(plateau:dict, coup:str) -> bool:
         return True
     else:
         return False
-=======
+    
 def est_pleine(plateau:dict) -> bool:
     """Fonction qui permet de savoir si la grille est pleine
     Args:
@@ -73,5 +72,3 @@ plateau = {
 
 termine = False
 joueur = "X"
->>>>>>> 6d791feeaff4ae918222c273c277438ee2d3d6db
->>>>>>> 29946a0d280862a12c55b7f9fd0fca50c7e8bd5e
