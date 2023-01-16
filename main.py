@@ -99,3 +99,29 @@ plateau = {
 
 termine = False
 joueur = "X"
+
+while not termine:
+    afficher_grille(plateau)
+    
+    coup = input("Entrez un coup : (Joueur = " + joueur + " ) ")
+    # On vérifie si le coup est valide, sinon on redemande un coup
+    while not est_coup_valide(plateau, coup):
+        coup = input("Entrez un coup (Valide cette fois): ")
+    
+    jouer_coup(plateau, joueur, coup)
+    
+    pleine = est_pleine(plateau)
+    gagnante = est_gagnante(plateau)
+    termine = pleine or gagnante
+    
+    if gagnante:
+        afficher_grille(plateau)
+        print("Félicitations joueur ", joueur)
+    elif pleine:
+        afficher_grille(plateau)
+        print("Égalité")
+    else:
+        if joueur == "X":
+            joueur = "O"
+        else:
+            joueur = "X"
